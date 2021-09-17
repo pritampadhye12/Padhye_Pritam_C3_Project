@@ -18,6 +18,11 @@ public class Restaurant
         this.closingTime = closingTime;
     }
 
+    public int getTotalPrice(List<String> items)
+    {
+        return 0;
+    }
+
     public boolean isRestaurantOpen(LocalTime inputTime)
     {
         int compareClosing = closingTime.compareTo(inputTime);
@@ -35,17 +40,13 @@ public class Restaurant
         return menu;
     }
 
-    private Item findItemByName(String itemName) throws itemNotFoundException
+    private Item findItemByName(String itemName)
     {
-        for(Item item: menu)
+        for (Item item : menu)
         {
-            if(item.getName().equalsIgnoreCase(itemName))
+            if (item.getName().equals(itemName))
             {
                 return item;
-            }
-            else
-            {
-                throw new itemNotFoundException(itemName);
             }
         }
         return null;

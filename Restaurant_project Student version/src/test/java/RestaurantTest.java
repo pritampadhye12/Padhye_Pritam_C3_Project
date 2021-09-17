@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,7 +20,26 @@ class RestaurantTest
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Vegetable sizzler", 150);
     }
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>ORDER TOTAL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    //
+    @Test
+    public void return_total_order_price()
+    {
+        //Method should take a list of string with the names of items
+        //Method should call findItemByName which will take an item from list of string
+        //Method should then get the price of the item after we get the item
+        //Method should add the prices
+        //Method should return the total price
+        List<String> items = new ArrayList<>();
+        items.add("Sweet corn soup");
+        items.add("Vegetable lasagne");
+        int price = restaurant.getTotalPrice(items);
+        assertEquals(388, price);
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER TOTAL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
@@ -55,7 +76,7 @@ class RestaurantTest
     public void removing_item_from_menu_should_decrease_menu_size_by_1() throws itemNotFoundException
     {
         int initialMenuSize = restaurant.getMenu().size();
-        restaurant.removeFromMenu("Sweet corn soup");
+        restaurant.removeFromMenu("Vegetable lasagne");
         assertEquals(initialMenuSize-1,restaurant.getMenu().size());
     }
 
