@@ -20,8 +20,18 @@ public class Restaurant
 
     public int getTotalPrice(List<String> items)
     {
-        return 0;
+        int totalPrice = 0;
+        for (String str : items)
+        {
+            Item item = findItemByName(str);
+            if (item != null)
+            {
+                totalPrice = totalPrice + item.getPrice();
+            }
+        }
+        return totalPrice;
     }
+
 
     public boolean isRestaurantOpen(LocalTime inputTime)
     {

@@ -17,7 +17,7 @@ class RestaurantTest
     {
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
-        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
         restaurant.addToMenu("Vegetable sizzler", 150);
@@ -35,9 +35,10 @@ class RestaurantTest
         //Method should return the total price
         List<String> items = new ArrayList<>();
         items.add("Sweet corn soup");
-        items.add("Vegetable lasagne");
+        items.add("Vegetable sizzler");
+
         int price = restaurant.getTotalPrice(items);
-        assertEquals(388, price);
+        assertEquals(269, price);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER TOTAL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
